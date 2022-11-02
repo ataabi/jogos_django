@@ -1,0 +1,115 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="container text-center bg" style="width: 60%;">
+    <h2>Jogo de Forca</h2>
+    {% if palavra %}
+
+    <!-- Exibindo as Dicas -->
+        
+        <p> Uma palavra de {{ palavra.palavra|length }} letras</p>
+        <h5>Dica: 
+        <p class='text-capitalize'>{{ palavra.dica1 }} </p>  
+        </h5>
+        
+        
+
+        <!-- Exibindo as letras  -->
+        {% for letra in palavra.palavra %}
+            {% if request.session.lista_chutes %}
+                {% for chute in request.session.lista_chutes %}
+                    {% if chute == letra %}
+                        <p style="display:inline-flex">{{letra}}</p>
+                    {% endif %}
+                {% endfor%}
+            {% endif %}
+            {% if letra not in request.session.lista_chutes %}
+                <p style="display:inline-flex">_</p>
+            {% endif %}
+        {% endfor%}
+
+        <!-- Formulario de envia do chute do cliente -->
+        <br>
+        <form class="text-center inline-block border border-dark p-3 rounded" 
+            style="display:inline-block;" action="{% url 'forca' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="semente" value="{{palavra.id}}">
+            <input type="hidden" name="chances" value="{{ chances }}">
+            
+            <div>
+                <div>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="q">Q</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="w">W</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="e">E</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="r">R</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="t">T</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="y">Y</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="u">U</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="i">I</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="o">O</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="p">P</button>
+                </div>
+                <div>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="a">A</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="s">S</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="d">D</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="f">F</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="g">G</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="h">H</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="j">J</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="k">K</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="l">L</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="ç">Ç</button>
+                </div>
+                <div>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="z">Z</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="x">X</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="c">C</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="v">V</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="b">B</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="n">N</button>
+                    <button type="submit" {{ cor_botao|safe }} name="chute" value="m">M</button>
+                </div>
+            </div>
+
+            <!--             
+            {% if confirmacao%}
+                <input disabled type="text" name="chute">
+                <input disabled type="submit">
+            {% else %}
+                <input class="form-control mx-auto" style="width: 35px;" type="text" name="chute">
+                <input class="form-control mx-auto" style="width: 70px;" type="submit">
+            {% endif %}  
+            -->
+
+            
+            <br>
+            <input type="submit" name="proxima" value="Nova Palavra">
+        </form>
+        <br>
+
+        {% if confirmacao %}
+            {% if confirmacao == 'vitoria' %}
+                <h3>VITORIA</h3>
+            {% endif %} 
+            {% if confirmacao == 'derrota' %}
+                <h3>DERROTA</h3>
+            {% endif %} 
+        {% else %}
+            <!-- Chances restantes do cliente -->
+            {% if chances %}
+                <p>Chances : {{chances}}</p>
+            {% endif %}
+            <br>
+            <!--  Chutes do cliente -->
+            <h4>Seus CHUTES : </h4>
+            {%for chute in request.session.lista_chutes %}
+                <p style="display:inline-flex">{{ chute.upper }}</p>
+            {% endfor %}
+        {% endif %} 
+
+        
+    {% endif %}
+</div>
+
+{% endblock %}

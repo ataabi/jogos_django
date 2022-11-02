@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+    <html>
+        <head>
+            <meta charset="UTF-8" />
+            <title>Jogos Django 2</title>
+            <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+        </head>
+        <body class="bg-secondary bg-opacity-25">
+            <header class="text-center">
+                <nav class="container mx-auto text-center border border-dark border-4 rounded-pill p-2 m-3">
+                    <a class="btn btn-secondary text-dark fs-6 fw-bold rounded-pill" href="{% url 'index' %}">HOME</a>
+                    <a class="btn btn-secondary text-dark fs-6 fw-bold text-dark rounded-pill" href="{% url 'perguntas' %}">Perguntas</a>
+                    <a class="btn btn-secondary text-dark fs-6 fw-bold text-dark rounded-pill" href="{% url 'forca' %}">Forca</a>
+                </nav>
+            </header>
+            {% block content %}{% endblock %}
+        </body>
+</html>

@@ -1,0 +1,40 @@
+lista = [
+    {
+        'pergunta': 'quanto � 5+5', 
+        'resposta': '10', 
+        'alternativa1': '10', 
+        'alternativa2': '20', 
+        'alternativa3': '100', 
+        'alternativa4': '0'}
+    
+    {
+        'pergunta': 'quanto � 2+3', 
+        'resposta': '5', 
+        'alternativa1': '10', 
+        'alternativa2': '20', 
+        'alternativa3': '5', 
+        'alternativa4': '15'}
+    
+    {
+        'pergunta': 'Quem foi a primeira pessoa a viajar no Espa�o?', 
+        'resposta': 'Yuri Gagarin', 
+        'alternativa1': 'Yuri Gagarin', 
+        'alternativa2': 'A cadela Laika', 
+        'alternativa3': 'Neil Armstrong', 
+        'alternativa4': 'Marcos Pontes', 
+        'alternativa5': 'Buzz Aldrin'},
+    
+    {'pergunta': 'Qual a montanha mais alta do mundo?', 'resposta': 'Monte Everest', 'alternativa1': 'Mauna Kea', 'alternativa2': 'Dhaulagiri', 'alternativa3': 'Monte Chimborazo', 'alternativa4': 'Monte Everest', 'alternativa5': 'Pico da Neblina'},
+    
+    {'pergunta': 'Onde se localiza Machu Picchu?', 'resposta': 'Peru', 'alternativa1': 'Col�mbia', 'alternativa2': 'Peru', 'alternativa3': 'China', 'alternativa4': 'Bol�via', 'alternativa5': '�ndia'},
+    
+    {'pergunta': 'Que pa�s tem o formato de uma bota?', 'resposta': 'It�lia', 'alternativa1': 'But�o', 'alternativa2': 'Brasil', 'alternativa3': 'Portugal', 'alternativa4': 'It�lia', 'alternativa5': 'M�xico'},
+    
+    {'pergunta': 'O que � mais pesado: 1 quilo de algod�o ou 1 quilo de ferro?', 'resposta': 'Ambos', 'alternativa1': 'Nenhum deles', 'alternativa2': 'Ambos', 'alternativa3': 'Ferro', 'alternativa4': 'Algod�o', 'alternativa5': 'M�xico'},
+    
+    {'pergunta': 'Quem inventou a l�mpada?', 'resposta': 'Thomas Edison', 'alternativa1': 'Graham Bell', 'alternativa2': 'Steve Jobs', 'alternativa3': 'Thomas Edison', 'alternativa4': 'Henry Ford', 'alternativa5': 'Santos Dumont'},
+    
+    {'pergunta': 'Quanto tempo a Terra demora para dar uma volta completa em torno dela mesma?', 'resposta': '24 horas', 'alternativa1': '24 horas', 'alternativa2': '365 dias', 'alternativa3': '7 dias', 'alternativa4': '365 ou 366 dias', 'alternativa5': '30 ou 31 dias'},
+    
+    {'pergunta': 'A que temperatura a �gua ferve?', 'resposta': '100 �C', 'alternativa1': '200 �C', 'alternativa2': '-10 �C', 'alternativa3': '180 �C', 'alternativa4': '0 �C', 'alternativa5': '100 �C'},
+]
