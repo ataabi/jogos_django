@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class='container'>
+    <form action="{% url 'cadastro' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="u_nick" class="form-label">Apelido</label>
+            <input class="form-control" type="text" name="u_nick">  
+            
+            <label for="u_name" class="form-label">Nome</label>
+            <input class="form-control" type="text" name="u_name">  
+                
+            <label class="form-label">Senha</label>
+            <input class="form-control" type="password" name="u_senha">
+
+            <label class="form-label">Email</label>
+            <input class="form-control" type="email" name="u_email">
+        </div>
+        <br>
+        <input type="submit" value="ENVIAR" >
+    </form>
+</div>
+
+
+{% endblock %}

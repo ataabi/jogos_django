@@ -1,6 +1,9 @@
 venv/
+__pychace__/
 bk_lista_de_perguntas.py
 lista_de_perguntas.py
 muda_lista.py
 nova_lista_perguntas.txt
-__pychace__/
+nova_lista_perguntas.json
+venvinit.bat
+

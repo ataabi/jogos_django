@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from perguntas import urls
 from forca import urls
+from usuarios import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('perguntas.urls')),
     path('',include('forca.urls')),
+    path('',include('usuarios.urls')),
 ]

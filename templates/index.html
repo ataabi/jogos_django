@@ -13,7 +13,16 @@
                     <a class="btn btn-secondary text-dark fs-6 fw-bold rounded-pill" href="{% url 'index' %}">HOME</a>
                     <a class="btn btn-secondary text-dark fs-6 fw-bold text-dark rounded-pill" href="{% url 'perguntas' %}">Perguntas</a>
                     <a class="btn btn-secondary text-dark fs-6 fw-bold text-dark rounded-pill" href="{% url 'forca' %}">Forca</a>
+                    
+                    {% if user.is_authenticated %}
+                    <a class="btn btn-secondary text-dark fs-6 fw-bold text-dark rounded-pill" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <a class="btn btn-secondary text-dark fs-6 fw-bold text-dark rounded-pill" href="{% url 'cadastro' %}">Cadastro</a>
+                    <a class="btn btn-secondary text-dark fs-6 fw-bold text-dark rounded-pill" href="{% url 'login' %}">Login</a>
+                    {% endif %}
+            
                 </nav>
+                <h2>{{ user.username }}</h2>
             </header>
             {% block content %}{% endblock %}
         </body>
