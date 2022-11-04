@@ -1,7 +1,6 @@
 lista_perguntas = [
     {
-        'pergunta': 'Quem inventou a lâmpada?', 
-        'resposta': 'Thomas Edison', 
+        'pergunta': 'Quem inventou a lâmpada?', 'resposta': 'Thomas Edison', 
         'alternativa1': 'Graham Bell', 
         'alternativa2': 'Steve Jobs', 
         'alternativa3': 'Thomas Edison', 
@@ -24,16 +23,14 @@ lista_perguntas = [
         'alternativa4': '365 ou 366 dias', 
         'alternativa5': '30 ou 31 dias'},
     {
-        'pergunta': 'A que temperatura a água ferve?', 
-        'resposta': '100 ºC', 
+        'pergunta': 'A que temperatura a água ferve?', 'resposta': '100 ºC', 
         'alternativa1': '200 ºC', 
         'alternativa2': '-10 ºC', 
         'alternativa3': '180 ºC', 
         'alternativa4': '0 ºC', 
         'alternativa5': '100 ºC'},
     {
-        'pergunta':'Quem foi a primeira pessoa a viajar no Espaço?' ,
-        'resposta': 'Yuri Gagarin', 
+        'pergunta':'Quem foi a primeira pessoa a viajar no Espaço?' ,'resposta': 'Yuri Gagarin', 
         'alternativa1':'Yuri Gagarin',
         'alternativa2':'A cadela Laika',
         'alternativa3':'Neil Armstrong',
@@ -173,14 +170,14 @@ lista_perguntas = [
         'alternativa4':'Natal',
         'alternativa5':'Rio de Janeiro'},
     {
-        'pergunta':'Qual o nome popular do cloreto de sódio?' ,'resposta': '', 
+        'pergunta':'Qual o nome popular do cloreto de sódio?' ,'resposta': 'Sal de cozinha', 
         'alternativa1':'Vinagre',
         'alternativa2':'Água',
         'alternativa3':'Papel',
         'alternativa4':'Fermento',
         'alternativa5':'Sal de cozinha'},
     {
-        'pergunta':'Que animal põe o maior ovo?' ,'resposta': '', 
+        'pergunta':'Que animal põe o maior ovo?' ,'resposta': 'Avestruz', 
         'alternativa1':'Beija-flor',
         'alternativa2':'Avestruz',
         'alternativa3':'Tartaruga-gigante',
@@ -243,7 +240,7 @@ lista_perguntas = [
         'alternativa4':'Golfe',
         'alternativa5':'Esgrima'},
     {
-        'pergunta':'Que grande evento histórico aconteceu em 1822 no Brasil?' ,'resposta': 'Independência do Brasil.', 
+        'pergunta':'Que grande evento histórico aconteceu em 1822 no Brasil?' ,'resposta': 'Independência do Brasil', 
         'alternativa1':'Descobrimento do Brasil',
         'alternativa2':'Ditadura Militar',
         'alternativa3':'Revolução de 1930',

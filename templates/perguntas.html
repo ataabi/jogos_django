@@ -7,67 +7,54 @@
         <br>
         <section>
             <div>
-                {% for p in perguntas%}
-                    <h4>{{ p.pergunta }}</h4>
-                    
+                <h4>{{ pergunta }}</h4>
                     <form action="{% url 'perguntas' %}" method="POST">
                         {% csrf_token %}
-                        <input type="hidden" value="{{ perguntas.number }}" name="pagina_atual">
-                        <input type="hidden" value="{{ p.id }}" name="pid">
-                        
+                        <input type="hidden" value="{{ pergunta.id }}" name="pid">
                         <div class="col-4 mx-auto" style="width: 90%;">
                             <br> 
-                            {% for a in p.lista_alternativas %} 
+                            {% for a in pergunta.lista_alternativas %} 
                                 {% if confirmacao %}
-                                    {% if a == p.resposta and p.resposta == resposta_cliente %}
+                                    {% if a == pergunta.resposta and pergunta.resposta == resposta_cliente %}
                                         <button  class="btn btn-success m-1 mx-auto" style="width: 90%;" type="submit" >{{ a }}</button>
                                     {% else %}
-                                        {% if a == resposta_cliente and a != p.resposta %}
-                                        <button  class="btn btn-danger m-1 mx-auto" style="width: 90%;" type="submit" value="{{ a }}" name="resposta">{{ a }}</button>
+                                        {% if a == resposta_cliente and a != pergunta.resposta %}
+                                            <button  class="btn btn-danger m-1 mx-auto" style="width: 90%;" type="submit" value="{{ a }}" name="resposta">{{ a }}</button>
                                         {% else %}
-                                        <button disabled class="btn btn-light m-1 mx-auto" style="width: 90%;" type="submit" value="{{ a }}" name="resposta">{{ a }}</button>
+                                            {% if a == pergunta.resposta %}
+                                                <button  class="btn btn-success m-1 mx-auto" style="width: 90%;" type="submit" value="{{ a }}" name="resposta">{{ a }}</button>
+                                            {% else %}
+                                                <button disabled class="btn btn-light m-1 mx-auto" style="width: 90%;" type="submit" value="{{ a }}" name="resposta">{{ a }}</button>
+                                            {% endif %}
                                         {% endif %}
                                     {% endif %}
                                 {% else %}
-                                <button class="btn btn-light m-1 mx-auto" style="width: 90%;" type="submit" value="{{ a }}" name="resposta">{{ a }}</button>
+                                    <button class="btn btn-light m-1 mx-auto" style="width: 90%;" type="submit" value="{{ a }}" name="resposta">{{ a }}</button>
                                 {% endif %}
                             {% endfor %}
                         </div>
-
                     </form>
-                {% endfor %}
+                    <div>
+                        {% if confirmacao %}
+                            {% if confirmacao == 'correto' %}
+                                <p class="btn btn-success" >Resposta CORRETA</p>
+                            {% else %}
+                                <p class="btn btn-danger" >Resposta ERRADO</p>
+                            {% endif %}
+                            <br>
+                            <a class="btn btn-light" href="{% url 'perguntas' %}" >Proxima</a>
+                        {% endif %}
+                    </div>
+                    
             </div>
         </section>
         <br>
-        <div>
-            {% if confirmacao %}
-                {% if confirmacao == 'correto' %}
-                    <p class="btn btn-success" >Resposta CORRETA</p>
-                {% else %}
-                    <p class="btn btn-danger" >Resposta ERRADO</p>
-                {% endif %}    
-                <br>
-                {% if perguntas.has_next %}
-                    <a class="btn btn-light" href="?page={{ perguntas.next_page_number}}">
-                        Próxima pergunta
-                    </a>
-                {% endif %}
-                    
-            {% endif %}
-        </div>
+        
         <br>
         <div>
-            {% if perguntas.has_previous %}
-                <a href="?page={{ perguntas.previous_page_number}}">
-                    {{perguntas.number|add:'-1'}}
-                </a>
+            {% if user.is_authenticated %}
+                <p> SUA PONTUAÇÂO é {{request.session.pontos}}</p>
             {% endif %}
-            {% if perguntas.has_next %}
-                <a href="?page={{ perguntas.next_page_number}}">
-                    {{perguntas.number|add:'+1'}}
-                </a>
-            {% endif %}
-            <p> SUA PONTUAÇÂO é {{request.session.pontos}}</p>
         </div>
     </div>
 </div>

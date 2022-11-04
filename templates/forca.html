@@ -30,14 +30,13 @@
 
         <!-- Formulario de envia do chute do cliente -->
         <br>
-        <form class="text-center inline-block border border-dark p-3 rounded" 
-            style="display:inline-block;" action="{% url 'forca' %}" method="post">
+        <form action="{% url 'forca' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="semente" value="{{palavra.id}}">
             <input type="hidden" name="chances" value="{{ chances }}">
             
-            <div>
-                <div>
+            <div class="text-center border border-dark p-3 rounded" style="display:inline-block ;">
+                <div style="display:inline-block ;">
                     <button type="submit" {{ cor_botao|safe }} name="chute" value="q">Q</button>
                     <button type="submit" {{ cor_botao|safe }} name="chute" value="w">W</button>
                     <button type="submit" {{ cor_botao|safe }} name="chute" value="e">E</button>
@@ -84,7 +83,7 @@
 
             
             <br>
-            <input type="submit" name="proxima" value="Nova Palavra">
+            <input class="rounded-bottom" type="submit" name="proxima" value="Nova Palavra">
         </form>
         <br>
 
