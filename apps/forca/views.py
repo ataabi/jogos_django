@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Palavra
+from usuarios.models import Ranking
+from django.contrib.auth.models import User
 from random import choice
 
 # Create your views here.
@@ -64,17 +66,34 @@ def forca(request):
         else:
             chances += 1
 
+        if request.user.is_authenticated:
+            nome_usuario = request.user
+            try:
+                usuario = Ranking.objects.get(pk=nome_usuario)
+            except:
+                usuario = Ranking(user=nome_usuario)
 
-        if len(request.session['palavra_atual']) == 0:
-            contexto['confirmacao'] = 'vitoria'
-            contexto['cor_botao'] = 'class="btn btn-success border border-dark"'
-            
-            print('VITORIA')
-        elif chances >= 5:
-            print('DERROTA')
-            contexto['confirmacao'] = 'derrota'
-            contexto['cor_botao'] = 'class="btn btn-danger border border-dark"'
-            
+            if len(request.session['palavra_atual']) == 0:
+                contexto['confirmacao'] = 'vitoria'
+                contexto['cor_botao'] = 'disabled class="btn btn-success border border-dark"'
+                usuario.pontos_forca += 1
+                
+            elif chances >= 5:
+                contexto['confirmacao'] = 'derrota'
+                contexto['cor_botao'] = 'disabled class="btn btn-danger border border-dark"'
+                usuario.pontos_forca -= 1
+
+            usuario.save()
+
+        else:
+            if len(request.session['palavra_atual']) == 0:
+                contexto['confirmacao'] = 'vitoria'
+                contexto['cor_botao'] = 'disabled class="btn btn-success border border-dark"'
+                
+            elif chances >= 5:
+                contexto['confirmacao'] = 'derrota'
+                contexto['cor_botao'] = 'disabled class="btn btn-danger border border-dark"'
+
         contexto['chances'] = chances
 
     return render(request, 'forca.html', contexto)

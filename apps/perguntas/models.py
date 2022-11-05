@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -23,7 +22,3 @@ class Pergunta(models.Model):
 
     def __str__(self):
         return self.pergunta
-
-class RankingPergunta(models.Model):
-    user = models.OneToOneField(User, related_name='profile' ,primary_key=User, on_delete=models.CASCADE)
-    pontos_pergunta = models.IntegerField()

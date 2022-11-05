@@ -25,5 +25,45 @@
                 <h2>{{ user.username }}</h2>
             </header>
             {% block content %}{% endblock %}
+
+            <div class='container'>
+            {% if ranking_pergunta %}
+            <div class='container border rounded-3' style="width: 40%;display: inline-block;">
+                <h5>Ranking Perguntas</h5>
+
+                <table class="table table-sm table-striped table-hover">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Pontuação</th>
+                    </tr>
+                    {% for r in ranking_pergunta %}
+                        <tr>
+                            <th>{{ r.user }}</th>
+                            <th>{{ r.pontos_pergunta }}</th>
+                        </tr>    
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+
+            {% if ranking_forca %}
+            <div class='container border rounded-3' style="width: 40%;display: inline-block;">
+                <h5>Ranking Perguntas</h5>
+
+                <table class="table table-sm table-striped table-hover">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Pontuação</th>
+                    </tr>
+                    {% for r in ranking_forca %}
+                        <tr>
+                            <th>{{ r.user }}</th>
+                            <th>{{ r.pontos_forca }}</th>
+                        </tr>    
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            </div>
         </body>
 </html>

@@ -18,9 +18,12 @@ from django.urls import path, include
 from perguntas import urls
 from forca import urls
 from usuarios import urls
+from .views import index
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index, name='index'),
     path('', include('perguntas.urls')),
     path('',include('forca.urls')),
     path('',include('usuarios.urls')),
